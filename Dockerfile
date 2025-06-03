@@ -1,17 +1,14 @@
-# Imagen base con Node.js
-FROM node:14
+# Usa la imagen base de NGINX
+FROM nginx:latest
 
-# Directorio de trabajo dentro del contenedor
-WORKDIR /app
+# Define el directorio donde estarán los archivos de la aplicación
+WORKDIR /usr/share/nginx/html
 
-# Copiar los archivos del repositorio al contenedor
+# Copia los archivos de la aplicación al contenedor
 COPY . .
 
-# Instalar las dependencias
-RUN npm install
+# Expone el puerto 80
+EXPOSE 80
 
-# Exponer el puerto si la app lo necesita
-EXPOSE 8000
-
-# Comando para lanzar la aplicación
-CMD ["npm", "start"]
+# Inicia NGINX
+CMD ["nginx", "-g", "daemon off;"]
