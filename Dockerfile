@@ -2,7 +2,7 @@ FROM nginx:latest
 
 WORKDIR /usr/share/nginx/html
 
-# Instalar Git en Debian
+# Instalar Git y clonar el repositorio en un directorio temporal
 RUN apt-get update && apt-get install -y git && \
     rm -rf /usr/share/nginx/html/* && \
     git clone https://github.com/samuelalten/pong-js.git /tmp/pong && \
