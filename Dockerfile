@@ -3,7 +3,7 @@ FROM nginx:latest
 WORKDIR /usr/share/nginx/html
 
 # Copiar los archivos del repositorio al directorio donde NGINX los servirá
-COPY prueba3 /usr/share/nginx/html
+COPY pong.html /usr/share/nginx/html
 
 # Exponer el puerto necesario
 EXPOSE 80
