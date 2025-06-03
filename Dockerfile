@@ -1,14 +1,13 @@
 # Usa la imagen base de NGINX
 FROM nginx:latest
 
-# Define el directorio donde estarán los archivos de la aplicación
 WORKDIR /usr/share/nginx/html
 
-# Copia los archivos de la aplicación al contenedor
-COPY . .
+# Clonar el repositorio desde GitHub dentro del contenedor
+RUN apk add --no-cache git && \
+    git clone https://github.com/samuelalten/pong-js.git . 
 
-# Expone el puerto 80
+# Exponer el puerto de NGINX
 EXPOSE 80
 
-# Inicia NGINX
 CMD ["nginx", "-g", "daemon off;"]
